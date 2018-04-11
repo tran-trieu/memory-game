@@ -46,6 +46,28 @@ var counter = document.querySelector(".moves");
 function moveCounter() {
     moves++;
     counter.innerHTML = moves;
+    starRating();
+}
+
+//star rating
+var stars = document.querySelectorAll(".fa-star");
+
+function starRating() {
+
+    if (moves > 15){
+        for( i= 0; i < 3; i++){
+            if(i > 0){
+                stars[i].classList.add("fa-star-o");
+            }
+        }
+    }
+    else if (moves > 10 && moves < 14){
+        for( i= 0; i < 3; i++){
+            if(i > 1){
+                stars[i].classList.add("fa-star-o");
+            }
+        }
+    }
 }
 
 //list of open cards
@@ -59,8 +81,6 @@ var displayCard = function() {
 
 //function to add cards to list of open cards and see whether cards are matching or not
 function openCard() {
-
-    timeCounter();
 
     openedCards.push(this);
 
