@@ -39,6 +39,15 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+//move counter
+var moves = 0;
+var counter = document.querySelector(".moves");
+
+function moveCounter() {
+    moves++;
+    counter.innerHTML = moves;
+}
+
 //list of open cards
 var openedCards = [];
 
@@ -54,6 +63,8 @@ function openCard() {
     openedCards.push(this);
 
     if (openedCards.length > 1) {
+
+      moveCounter();
 
       //matching cards
       if (openedCards[0].type === openedCards[1].type) {
