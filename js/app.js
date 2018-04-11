@@ -27,6 +27,8 @@ function shuffle(array) {
     return array;
 }
 
+document.body.onload = shuffle(cards);
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -39,6 +41,30 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+ function start() {
+
+     //shuffles cards
+     cards = shuffle(cards);
+
+     //reset moves
+     moves = 0;
+     counter.innerHTML = moves;
+
+     //reset timer
+     seconds = 0;
+     timer.innerHTML = seconds;
+     clearInterval(time);
+
+     //reset cards
+     for (var h = 0; h < cards.length; h++) {
+         cards[i].classList.remove("show", "open", "match");
+     }
+
+     //reset star rating system
+     stars.classList.remove(".fa-star-o");
+
+ }
+
 //move counter
 var moves = 0;
 var counter = document.querySelector(".moves");
@@ -46,7 +72,13 @@ var counter = document.querySelector(".moves");
 function moveCounter() {
     moves++;
     counter.innerHTML = moves;
+
     starRating();
+
+    if (moves === 1) {
+        timeCounter();
+    }
+
 }
 
 //star rating
@@ -55,19 +87,20 @@ var stars = document.querySelectorAll(".fa-star");
 function starRating() {
 
     if (moves > 15){
-        for( i= 0; i < 3; i++){
+        for( i = 0; i < 3; i++){
             if(i > 0){
                 stars[i].classList.add("fa-star-o");
             }
         }
     }
     else if (moves > 10 && moves < 14){
-        for( i= 0; i < 3; i++){
+        for( i = 0; i < 3; i++){
             if(i > 1){
                 stars[i].classList.add("fa-star-o");
             }
         }
     }
+
 }
 
 //list of open cards
@@ -119,10 +152,11 @@ function openCard() {
 //time counter
 var seconds = 0;
 var timer = document.querySelector(".seconds");
+var time;
 
 function timeCounter() {
 
-    setInterval(function() {
+    time = setInterval(function() {
         timer.innerHTML = seconds;
         seconds++;
     }, 1000);
