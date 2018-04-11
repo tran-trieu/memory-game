@@ -71,9 +71,11 @@ function openCard() {
 
         openedCards[0].classList.add("nomatch");
         openedCards[1].classList.add("nomatch");
-        openedCards[0].classList.remove("open", "show", "nomatch");
-        openedCards[1].classList.remove("open", "show", "nomatch");
-        openedCards = [];
+        setTimeout(function() {
+          openedCards[0].classList.remove("open", "show", "nomatch");
+          openedCards[1].classList.remove("open", "show", "nomatch");
+          openedCards = [];
+        }, 400);
 
       }
 
