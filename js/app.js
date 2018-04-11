@@ -60,6 +60,8 @@ var displayCard = function() {
 //function to add cards to list of open cards and see whether cards are matching or not
 function openCard() {
 
+    timeCounter();
+
     openedCards.push(this);
 
     if (openedCards.length > 1) {
@@ -91,6 +93,19 @@ function openCard() {
       }
 
     }
+
+}
+
+//time counter
+var seconds = 0;
+var timer = document.querySelector(".seconds");
+
+function timeCounter() {
+
+    setInterval(function() {
+        timer.innerHTML = seconds;
+        seconds++;
+    }, 1000);
 
 }
 
