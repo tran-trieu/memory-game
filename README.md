@@ -1,20 +1,22 @@
 # Memory Game Project
 
-## Table of Contents
+[1] How to Play
+[2] Credit
+[3] Issues
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+-----
 
-## Instructions
+1) How to Play
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+  - to play, click on any cards
+  - to replay or reset, click on restart button
+  - reloading the page or closing the modal will start a new game 
 
-To get started, open `js/app.js` and start building out the app's functionality
+2) Credit
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+  - styling of the modal is from               
+    w3schools.com/howto/howto_css_modals.asp
 
-## Contributing
+3) Issues
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+  - shuffle function might not be working
