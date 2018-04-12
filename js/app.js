@@ -4,6 +4,10 @@
 var card = document.getElementsByClassName("card");
 var cards = [...card];
 
+var star = document.getElementsByClassName("fa-star");
+var stars = [...star];
+
+var matchingCards = document.getElementsByClassName("match");
 
 /*
  * Display the cards on the page
@@ -27,9 +31,6 @@ function shuffle(array) {
     return array;
 }
 
-document.body.onload = shuffle(cards);
-
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -41,64 +42,29 @@ document.body.onload = shuffle(cards);
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- function start() {
+function start() {
 
-     //shuffles cards
-     cards = shuffle(cards);
+    //shuffles cards
+    cards = shuffle(cards);
 
-     //reset moves
-     moves = 0;
-     counter.innerHTML = moves;
-
-     //reset timer
-     seconds = 0;
-     timer.innerHTML = seconds;
-     clearInterval(time);
-
-     //reset cards
-     for (var h = 0; h < cards.length; h++) {
-         cards[i].classList.remove("show", "open", "match");
-     }
-
-     //reset star rating system
-     stars.classList.remove(".fa-star-o");
-
- }
-
-//move counter
-var moves = 0;
-var counter = document.querySelector(".moves");
-
-function moveCounter() {
-    moves++;
+    //reset moves
+    moves = 0;
     counter.innerHTML = moves;
 
-    starRating();
+    //reset timer
+    seconds = 0;
+    timer.innerHTML = seconds;
+    clearInterval(time);
 
-    if (moves === 1) {
-        timeCounter();
+    //reset stars
+    for (var d = 0; d < stars.length; d++) {
+        stars[d].classList.remove("fa-star-o");
+        stars[d].classList.add("fa-star");
     }
 
-}
-
-//star rating
-var stars = document.querySelectorAll(".fa-star");
-
-function starRating() {
-
-    if (moves > 15){
-        for( i = 0; i < 3; i++){
-            if(i > 0){
-                stars[i].classList.add("fa-star-o");
-            }
-        }
-    }
-    else if (moves > 10 && moves < 14){
-        for( i = 0; i < 3; i++){
-            if(i > 1){
-                stars[i].classList.add("fa-star-o");
-            }
-        }
+    //reset cards
+    for (var h = 0; h < cards.length; h++) {
+        cards[h].classList.remove("show", "open", "match");
     }
 
 }
@@ -110,7 +76,7 @@ var openedCards = [];
 var displayCard = function() {
     this.classList.toggle("open");
     this.classList.toggle("show");
-}
+};
 
 //function to add cards to list of open cards and see whether cards are matching or not
 function openCard() {
@@ -160,6 +126,33 @@ function timeCounter() {
         timer.innerHTML = seconds;
         seconds++;
     }, 1000);
+
+}
+
+//move counter
+var moves = 0;
+var counter = document.querySelector(".moves");
+
+function moveCounter() {
+    moves++;
+    counter.innerHTML = moves;
+
+    starRating();
+
+    if (moves === 1) {
+        timeCounter();
+    }
+
+}
+
+//star rating
+ function starRating() {
+
+    if (moves > 15) {
+        stars[1].classList.add("fa-star-o");
+    } else if (moves > 10 && moves < 14) {
+        stars[2].classList.add("fa-star");
+    }
 
 }
 
