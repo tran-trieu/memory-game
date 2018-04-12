@@ -9,6 +9,8 @@ var stars = [...star];
 
 var matchingCards = document.getElementsByClassName("match");
 
+var showModal = document.getElementById("modal");
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -151,13 +153,47 @@ function moveCounter() {
     if (moves > 15) {
         stars[1].classList.add("fa-star-o");
     } else if (moves > 10 && moves < 14) {
-        stars[2].classList.add("fa-star");
+        stars[2].classList.add("fa-star-o");
     }
 
 }
+
+//end of the game, congratulations modal
+function end() {
+
+    if (matchingCards.length == 16) {
+
+        clearInterval(time);
+        var finalTime = timer.innerHTML;
+
+        showModal.classList.remove("display");
+
+        document.getElementById("totalTime").innerHTML = finalTime;
+
+        document.getElementById("totalMoves").innerHTML = moves;
+
+        var allStars = document.querySelector(".stars").innerHTML;
+        document.getElementById("totalStars").innerHTML = allStars;
+
+    }
+
+}
+
+//closing the modal
+var closeModal = document.getElementById("close");
+
+function closingModal() {
+
+    showModal.classList.add("display");
+    start();
+
+}
+
+closeModal.addEventListener("click", closingModal);
 
 //adds event listeners to each card
 for (card of cards) {
     card.addEventListener("click", displayCard);
     card.addEventListener("click", openCard);
+    card.addEventListener("click", end);
 }
