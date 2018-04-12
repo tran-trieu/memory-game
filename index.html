@@ -1,6 +1,9 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
@@ -8,7 +11,9 @@
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
+
 </head>
+
 <body onload="start()">
 
     <div class="container">
@@ -17,22 +22,22 @@
         </header>
 
         <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
+            <ul class="stars">
+        		    <li><i class="fa fa-star"></i></li>
+        		    <li><i class="fa fa-star"></i></li>
+        		    <li><i class="fa fa-star"></i></li>
+        	  </ul>
 
-        	<span class="moves">0</span> Moves
+        	  <span class="moves">0</span> Moves
 
-          <div class="timer">
-            Time:
-            <span class="seconds">0</span>s
-          </div>
+            <div class="timer">
+                Time:
+                <span class="seconds">0</span>s
+            </div>
 
-          <div class="restart" onclick=start()>
-        		<i class="fa fa-repeat"></i>
-        	</div>
+            <div class="restart" onclick=start()>
+          		  <i class="fa fa-repeat"></i>
+          	</div>
         </section>
 
         <ul class="deck">
@@ -90,8 +95,8 @@
     <div id="modal" class="display">
 
         <div class="modal-content">
-          <span id="close">&times;</span>
-          <p>Congratulations, you won! You finished the game in <span id="totalTime"> </span>s with <span id="totalMoves"> </span> moves! That makes a total of <span id="totalStars"> </span>stars. Good job!</p>
+            <span id="close">&times;</span>
+            <p>Congratulations, you won! You finished the game in <span id="totalTime"> </span>s with <span id="totalMoves"> </span> moves! That makes a total of <span id="totalStars"> </span>stars. Good job!</p>
         </div>
 
     </div>
