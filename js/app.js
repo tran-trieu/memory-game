@@ -1,15 +1,15 @@
 /*
  * Create a list that holds all of your cards
  */
-var card = document.getElementsByClassName("card");
-var cards = [...card];
+let card = document.getElementsByClassName("card");
+let cards = [...card];
 
-var star = document.getElementsByClassName("fa-star");
-var stars = [...star];
+let star = document.getElementsByClassName("fa-star");
+let stars = [...star];
 
-var matchingCards = document.getElementsByClassName("match");
+let matchingCards = document.getElementsByClassName("match");
 
-var showModal = document.getElementById("modal");
+let showModal = document.getElementById("modal");
 
 /*
  * Display the cards on the page
@@ -48,6 +48,10 @@ function start() {
 
       //shuffles cards
       cards = shuffle(cards);
+      document.getElementById("cardDeck").innerHTML = "";
+      cards.forEach((card)=>{
+          document.getElementById("cardDeck").appendChild(card);
+      })
 
       //reset moves
       moves = 0;
@@ -59,23 +63,23 @@ function start() {
       clearInterval(time);
 
       //reset stars
-      for (var d = 0; d < stars.length; d++) {
+      for (let d = 0; d < stars.length; d++) {
             stars[d].classList.remove("fa-star-o");
             stars[d].classList.add("fa-star");
       }
 
       //reset cards
-      for (var h = 0; h < cards.length; h++) {
+      for (let h = 0; h < cards.length; h++) {
             cards[h].classList.remove("show", "open", "match");
       }
 
 }
 
 //list of open cards
-var openedCards = [];
+let openedCards = [];
 
 //function to display card if clicked on
-var displayCard = function() {
+let displayCard = function() {
       this.classList.toggle("open");
       this.classList.toggle("show");
 };
@@ -85,7 +89,7 @@ function openCard() {
 
       openedCards.push(this);
 
-      if (openedCards.length > 1) {
+      if (openedCards.length === 2) {
 
             moveCounter();
 
@@ -105,9 +109,21 @@ function openCard() {
 
               openedCards[0].classList.add("nomatch");
               openedCards[1].classList.add("nomatch");
+
+              for (card of cards) {
+                    card.classList.add("noclick");
+                    //card.removeEventListener("click", displayCard);
+                    //card.removeEventListener("click", openCard);
+              }
+
               setTimeout(function() {
                 openedCards[0].classList.remove("open", "show", "nomatch");
                 openedCards[1].classList.remove("open", "show", "nomatch");
+                for (card of cards) {
+                      card.classList.remove("noclick");
+                      //card.removeEventListener("click", displayCard);
+                      //card.removeEventListener("click", openCard);
+                }
                 openedCards = [];
               }, 400);
 
@@ -118,9 +134,9 @@ function openCard() {
 }
 
 //time counter
-var seconds = 0;
-var timer = document.querySelector(".seconds");
-var time;
+let seconds = 0;
+let timer = document.querySelector(".seconds");
+let time;
 
 function timeCounter() {
 
@@ -132,8 +148,8 @@ function timeCounter() {
 }
 
 //move counter
-var moves = 0;
-var counter = document.querySelector(".moves");
+let moves = 0;
+let counter = document.querySelector(".moves");
 
 function moveCounter() {
 
@@ -165,7 +181,7 @@ function end() {
       if (matchingCards.length == 16) {
 
           clearInterval(time);
-          var finalTime = timer.innerHTML;
+          let finalTime = timer.innerHTML;
 
           showModal.classList.remove("display");
 
@@ -181,7 +197,7 @@ function end() {
 }
 
 //closing the modal
-var closeModal = document.getElementById("close");
+let closeModal = document.getElementById("close");
 
 function closingModal() {
 

@@ -80,11 +80,16 @@ h1 {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
+    pointer-events: none;
 }
 
 .deck .card.nomatch {
     background: #a580cc;
     font-size: 33px;
+}
+
+.deck .card.noclick {
+    pointer-events: none;
 }
 
 /*
